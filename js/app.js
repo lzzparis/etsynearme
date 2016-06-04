@@ -103,7 +103,9 @@ function displayListings(shop, listings){
 		"</h2>"+
 		"<ul class=\"listings-list\">");
 	listings.results.forEach(function(one){
-		$("#"+shop.shop_id).children("ul").append("<li class=\"listings-item\">la</li>");
+		$("#"+shop.shop_id).children("ul").append("<li class=\"listings-item\">"+
+				"<a href=\""+one.url+"\" target=\"_blank\">"+one.title+"</a>"+
+			"</li>");
 	
 	});
 }

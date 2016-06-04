@@ -12,9 +12,12 @@
 
 
 h1{
-	font-size: 2rem;
+	font-size: 4rem;
 }
 
+h2 {font-size:2rem;}
+
 li {
-	display:inline-block;
+	/*display:inline-block;*/
+	margin:0.5rem;
 }

@@ -62,13 +62,12 @@ function pullEtsyStores (params){
 }
 
 function displayShop(shop){
-	var shopUrl = shop.url;
-	var shopPic = shop.image_url_760x100;
-	var shopName = shop.shop_name;
+
 	var shopId = shop.shop_id;
 
 	//TODO - figure out why this isn't returning anythings
 	// var shopElem = $(".templates .single-shop").clone();
+
 
 	$.ajax({
 		url:"https://openapi.etsy.com/v2/shops/:shop_id/listings/active.js",	
@@ -81,7 +80,7 @@ function displayShop(shop){
 		type: "GET",
 		// callback:"callback",
 		success: function(data){
-			console.log(data);	
+			displayListings(shop, data);	
 		},
 		error: function(jqXHR, error){ //this waits for the ajax to return with an error promise object
 		 console.log(jqXHR	);
@@ -90,16 +89,24 @@ function displayShop(shop){
 	});
 
 
-	$("#results").append("<div class=\"templates single-shop\">"+
+}
+
+function displayListings(shop, listings){
+	var shopUrl = shop.url;
+	var shopPic = shop.image_url_760x100;
+	var shopName = shop.shop_name;
+	console.log(listings);
+
+	$("#results").append("<div id=\""+shop.shop_id+"\"class=\"single-shop\">"+
 		"<h2 class=\"shop-name\">"+
 			"<a href=\""+shopUrl+"\" target=\"_blank\">"+shopName+"</a>"+
 		"</h2>"+
-		"<ul class=\"listings-list\">"+
-		"<li class=\"listings-item\">Here's an item</li>"+
-		"<li class=\"listings-item\">Here's another</li>"+
-		"<li class=\"listings-item\">And another</li>"+
-		"</ul></div>");
-	}
+		"<ul class=\"listings-list\">");
+	listings.results.forEach(function(one){
+		$("#"+shop.shop_id).children("ul").append("<li class=\"listings-item\">la</li>");
+	
+	});
+}
 
 
 

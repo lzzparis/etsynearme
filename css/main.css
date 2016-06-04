@@ -14,3 +14,7 @@
 h1{
 	font-size: 2rem;
 }
+
+li {
+	display:inline-block;
+}

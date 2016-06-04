@@ -1,36 +1,11 @@
-html, body {
-	width:100%;
-	margin:0;
-	padding:0;
+*, *:before, *:after {
+	box-sizing: border-box;
 }
 
-*, *::before , *::after {
-	box-sizing:border-box;
+.container{
+	text-align:center;
 }
 
-.map {
-	width:70%;
-	height:100vh;
-}
-
-.left{
-	float:left;
-}
-
-.right{
-	float:right;
-}
-
-.databox{
-	position: absolute;
-	top:0;
-	left:0;
-	width:30%;
-	height:100vh;
-	padding:2rem;
-	/*background-color: pink;*/
-	-webkit-box-shadow: 3px 0px 5px 0px rgba(102,102,102,1);
-	-moz-box-shadow: 3px 0px 5px 0px rgba(102,102,102,1);
-	box-shadow: 3px 0px 5px 0px #aaa;
-	z-index: 999;
+h1{
+	font-size: 2rem;
 }

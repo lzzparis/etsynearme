@@ -9,7 +9,6 @@ $(document).ready(function(){
 	};
 
 	var geocoder;
-	var map;
 	var location;
 
 	
@@ -21,12 +20,9 @@ $(document).ready(function(){
 
 });
 
-function initMap(){
+function initGeocoder(){
 	 geocoder = new google.maps.Geocoder();
-	 map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 40.702637, lng: -73.989406},
-          zoom: 8
-    });
+
 }
 
 function getLocation(params,address){
@@ -54,10 +50,7 @@ function pullEtsyStores (params){
 		// callback:"callback",
 		success: function(data){
 			data.results.forEach(function(one){
-				var shopUrl = one.url;
-				var shopPic = one.image_url_760x100;
-				var shopName = one.shop_name;
-			 	$("#results").append("<p><a href=\""+shopUrl+"\" target=\"_blank\">"+shopName+"</a></p>");
+				displayShop(one);
 			});
 			console.log(data);	
 		},
@@ -66,6 +59,16 @@ function pullEtsyStores (params){
 		 console.log(error);
 		}
 	});
+}
+
+function displayShop(shop){
+	var shopUrl = shop.url;
+	var shopPic = shop.image_url_760x100;
+	var shopName = shop.shop_name;
+ 	$("#results").append("<p><a href=\""+shopUrl+"\" target=\"_blank\">"+shopName+"</a></p>");
+
+
+			
 }
 
 

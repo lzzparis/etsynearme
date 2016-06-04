@@ -29,6 +29,12 @@ $(document).ready(function(){
 		 console.log(error);
 		}
 	});
+
+	$(".location-getter").submit(function(event){
+		event.preventDefault();
+		getLocation($(this).children(".input-box").val());
+	});
+
 });
 
 function initMap(){
@@ -37,5 +43,13 @@ function initMap(){
           zoom: 8
     });
 }
+
+function getLocation(address){
+	console.log(address);
+
+}
+
+
+
 
 

@@ -65,11 +65,20 @@ function displayShop(shop){
 	var shopUrl = shop.url;
 	var shopPic = shop.image_url_760x100;
 	var shopName = shop.shop_name;
- 	$("#results").append("<p><a href=\""+shopUrl+"\" target=\"_blank\">"+shopName+"</a></p>");
 
+	//TODO - figure out why this isn't returning anythings
+	// var shopElem = $(".templates .single-shop").clone();
 
-			
-}
+	$("#results").append("<div class=\"templates single-shop\">"+
+		"<h2 class=\"shop-name\">"+
+			"<a href=\""+shopUrl+"\" target=\"_blank\">"+shopName+"</a>"+
+		"</h2>"+
+		"<ul class=\"listings-list\">"+
+		"<li class=\"listings-item\">Here's an item</li>"+
+		"<li class=\"listings-item\">Here's another</li>"+
+		"<li class=\"listings-item\">And another</li>"+
+		"</ul></div>");
+	}
 
 
 

@@ -8,6 +8,11 @@ $(document).ready(function(){
 		lon: longitude
 	};
 	var url="https://openapi.etsy.com/v2/shops.js";
+
+	var geocoder;
+	var map;
+
+
 	$.ajax({
 		url:url,	
 		data: params,
@@ -15,7 +20,6 @@ $(document).ready(function(){
 		type: "GET",
 		// callback:"callback",
 		success: function(data){
-				console.log(data);
 				data.results.forEach(function(one){
 				var shopUrl = one.url;
 				var shopPic = one.image_url_760x100;
@@ -38,6 +42,7 @@ $(document).ready(function(){
 });
 
 function initMap(){
+	 geocoder = new google.maps.Geocoder();
 	 map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 40.702637, lng: -73.989406},
           zoom: 8
@@ -45,7 +50,13 @@ function initMap(){
 }
 
 function getLocation(address){
-	console.log(address);
+	geocoder.geocode({address:address}, function(results, status){
+		var resultsBox = $("#results");
+		var latLong = results[0].geometry.location.lat()+", "+results[0].geometry.location.lng();
+
+		resultsBox.html("<h3>Your latlong is:</h3>");
+		resultsBox.append(latLong);
+	})
 
 }
 

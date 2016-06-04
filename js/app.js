@@ -20,8 +20,7 @@ $(document).ready(function(){
 				var shopUrl = one.url;
 				var shopPic = one.image_url_760x100;
 				var shopName = one.shop_name;
-				$(".container").append("<a href=\""+shopUrl+"\"><img src=\""+shopPic+"\"></a>");
-				$(".container").append("<a href=\""+shopUrl+"\">"+shopName+"</a>");
+				// $(".container").append("<a href=\""+shopUrl+"\">"+shopName+"</a>");
 				});
 
 		},
@@ -31,4 +30,12 @@ $(document).ready(function(){
 		}
 	});
 });
+
+function initMap(){
+	 map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 40.702637, lng: -73.989406},
+          zoom: 8
+    });
+}
+
 

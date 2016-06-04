@@ -65,9 +65,30 @@ function displayShop(shop){
 	var shopUrl = shop.url;
 	var shopPic = shop.image_url_760x100;
 	var shopName = shop.shop_name;
+	var shopId = shop.shop_id;
 
 	//TODO - figure out why this isn't returning anythings
 	// var shopElem = $(".templates .single-shop").clone();
+
+	$.ajax({
+		url:"https://openapi.etsy.com/v2/shops/:shop_id/listings/active.js",	
+		data:{
+			api_key:"208jico8ty161pguni7ha87e", 
+			shop_id:shopId,
+			limit:10
+		},
+		dataType:"jsonp",
+		type: "GET",
+		// callback:"callback",
+		success: function(data){
+			console.log(data);	
+		},
+		error: function(jqXHR, error){ //this waits for the ajax to return with an error promise object
+		 console.log(jqXHR	);
+		 console.log(error);
+		}
+	});
+
 
 	$("#results").append("<div class=\"templates single-shop\">"+
 		"<h2 class=\"shop-name\">"+

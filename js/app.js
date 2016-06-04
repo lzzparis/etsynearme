@@ -7,32 +7,11 @@ $(document).ready(function(){
 		lat: latitude,
 		lon: longitude
 	};
-	var url="https://openapi.etsy.com/v2/shops.js";
 
 	var geocoder;
 	var map;
 
-
-	$.ajax({
-		url:url,	
-		data: params,
-		dataType:"jsonp",
-		type: "GET",
-		// callback:"callback",
-		success: function(data){
-				data.results.forEach(function(one){
-				var shopUrl = one.url;
-				var shopPic = one.image_url_760x100;
-				var shopName = one.shop_name;
-				// $(".container").append("<a href=\""+shopUrl+"\">"+shopName+"</a>");
-				});
-
-		},
-		error: function(jqXHR, error){ //this waits for the ajax to return with an error promise object
-		 console.log(jqXHR	);
-		 console.log(error);
-		}
-	});
+	pullEtsyStores(params);
 
 	$(".location-getter").submit(function(event){
 		event.preventDefault();
@@ -50,6 +29,7 @@ function initMap(){
 }
 
 function getLocation(address){
+
 	geocoder.geocode({address:address}, function(results, status){
 		var resultsBox = $("#results");
 		var latLong = results[0].geometry.location.lat()+", "+results[0].geometry.location.lng();
@@ -60,6 +40,28 @@ function getLocation(address){
 
 }
 
+function pullEtsyStores (params){
+	$.ajax({
+		url:"https://openapi.etsy.com/v2/shops.js",	
+		data: params,
+		dataType:"jsonp",
+		type: "GET",
+		// callback:"callback",
+		success: function(data){
+			data.results.forEach(function(one){
+				var shopUrl = one.url;
+				var shopPic = one.image_url_760x100;
+				var shopName = one.shop_name;
+			 	// $(".container").append("<p><a href=\""+shopUrl+"\">"+shopName+"</a></p>");
+			});
+			console.log(data);	
+		},
+		error: function(jqXHR, error){ //this waits for the ajax to return with an error promise object
+		 console.log(jqXHR	);
+		 console.log(error);
+		}
+	});
+}
 
 
 

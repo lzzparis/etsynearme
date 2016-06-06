@@ -99,7 +99,8 @@ function getFeatured(shop, uri, params){
 		type: "GET",
 		// callback:"callback",
 		success: function(data){
-			displayListings(shop, data);
+			if(data.count)	displayListings(shop, data);
+			else getActive(shop);
 		},
 		error: function(jqXHR, error){ //this waits for the ajax to return with an error promise object
 		 console.log(jqXHR	);
@@ -110,7 +111,7 @@ function getFeatured(shop, uri, params){
 
 function getActive(shop){
 		$.ajax({
-		url:"https://openapi.etsy.com/v2/shops/:shop_id/listings/featured.js",	
+		url:"https://openapi.etsy.com/v2/shops/:shop_id/listings/active.js",	
 		data:{
 			api_key:"208jico8ty161pguni7ha87e", 
 			shop_id:shop.shop_id,
@@ -132,7 +133,7 @@ function getActive(shop){
 function displayListings(shop, listings){
 	var shopUrl = shop.url;
 	var shopName = shop.shop_name;
-	console.log(listings);
+	// console.log(listings);
 
 	//TODO if no featured, do another ajax call
 

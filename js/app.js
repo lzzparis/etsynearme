@@ -5,7 +5,8 @@ $(document).ready(function(){
 	var params ={
 		api_key:"208jico8ty161pguni7ha87e",
 		lat: latitude,
-		lon: longitude
+		lon: longitude,
+		limit:8
 	};
 
 	var geocoder;
@@ -71,6 +72,12 @@ function displayShop(shop){
 
 	var shopUrl = shop.url;
 	var shopName = shop.shop_name;
+	var listingUri = "https://openapi.etsy.com/v2/shops/:shop_id/listings";
+	var listingParams = {
+			api_key:"208jico8ty161pguni7ha87e", 
+			shop_id:shop.shop_id,
+			limit:10
+		};
 
 	$("#results").append("<div id=\""+shop.shop_id+"\"class=\"single-shop\">"+
 	"<h2 class=\"shop-name\">"+
@@ -78,11 +85,35 @@ function displayShop(shop){
 	"</h2>"+
 	"<ul class=\"listings-list\">");
 
+	getFeatured(shop, listingUri, listingParams);
+
+}
+
+function getFeatured(shop, uri, params){
+	var requestUri = uri+"/featured.js";
+
 	$.ajax({
+		url:requestUri,	
+		data: params,
+		dataType:"jsonp",
+		type: "GET",
+		// callback:"callback",
+		success: function(data){
+			displayListings(shop, data);
+		},
+		error: function(jqXHR, error){ //this waits for the ajax to return with an error promise object
+		 console.log(jqXHR	);
+		 console.log(error);
+		}
+	});
+}
+
+function getActive(shop){
+		$.ajax({
 		url:"https://openapi.etsy.com/v2/shops/:shop_id/listings/featured.js",	
 		data:{
 			api_key:"208jico8ty161pguni7ha87e", 
-			shop_id:shopId,
+			shop_id:shop.shop_id,
 			limit:10
 		},
 		dataType:"jsonp",
@@ -96,10 +127,6 @@ function displayShop(shop){
 		 console.log(error);
 		}
 	});
-
-
-
-
 }
 
 function displayListings(shop, listings){

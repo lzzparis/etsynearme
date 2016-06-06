@@ -69,7 +69,14 @@ function displayShop(shop){
 	//TODO - figure out why this isn't returning anythings
 	// var shopElem = $(".templates .single-shop").clone();
 
-	//TODO move the div creation from displayListings to here
+	var shopUrl = shop.url;
+	var shopName = shop.shop_name;
+
+	$("#results").append("<div id=\""+shop.shop_id+"\"class=\"single-shop\">"+
+	"<h2 class=\"shop-name\">"+
+		"<a href=\""+shopUrl+"\" target=\"_blank\">"+shopName+"</a>"+
+	"</h2>"+
+	"<ul class=\"listings-list\">");
 
 	$.ajax({
 		url:"https://openapi.etsy.com/v2/shops/:shop_id/listings/featured.js",	
@@ -97,17 +104,12 @@ function displayShop(shop){
 
 function displayListings(shop, listings){
 	var shopUrl = shop.url;
-	var shopPic = shop.image_url_760x100;
 	var shopName = shop.shop_name;
 	console.log(listings);
 
 	//TODO if no featured, do another ajax call
 
-	$("#results").append("<div id=\""+shop.shop_id+"\"class=\"single-shop\">"+
-		"<h2 class=\"shop-name\">"+
-			"<a href=\""+shopUrl+"\" target=\"_blank\">"+shopName+"</a>"+
-		"</h2>"+
-		"<ul class=\"listings-list\">");
+
 	listings.results.forEach(function(one){
 		$("#"+shop.shop_id).children("ul").append("<li class=\"listings-item\">"+
 				"<a href=\""+one.url+"\" target=\"_blank\">"+one.title+"</a>"+

@@ -33,9 +33,6 @@ function getLocation(params,address){
 		params.lat = results[0].geometry.location.lat();
 		params.lon = results[0].geometry.location.lng();
 
-		resultsBox.html("<h3>Your latlong is:</h3>");
-		resultsBox.append(params.lat+", "+params.lon);
-
 		pullEtsyStores(params);
 
 	})
@@ -76,7 +73,8 @@ function displayShop(shop){
 	var listingParams = {
 			api_key:"208jico8ty161pguni7ha87e", 
 			shop_id:shop.shop_id,
-			limit:10
+			limit:10,
+			includes:"MainImage"
 		};
 
 	$("#results").append("<div id=\""+shop.shop_id+"\"class=\"single-shop\">"+
@@ -133,7 +131,7 @@ function getActive(shop){
 function displayListings(shop, listings){
 	var shopUrl = shop.url;
 	var shopName = shop.shop_name;
-	// console.log(listings);
+	console.log(listings);
 
 	//TODO if no featured, do another ajax call
 
@@ -141,6 +139,7 @@ function displayListings(shop, listings){
 	listings.results.forEach(function(one){
 		$("#"+shop.shop_id).children("ul").append("<li class=\"listings-item\">"+
 				"<a href=\""+one.url+"\" target=\"_blank\">"+one.title+"</a>"+
+				"<img src=\""+one.MainImage.url_570xN+"\">"+
 			"</li>");
 	
 	});

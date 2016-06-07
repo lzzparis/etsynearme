@@ -15,15 +15,16 @@
 	</form>
 </header>
 <div id="results">
-	<div class="single-shop">
 		<div class="advance prev"></div>
 		<div class="advance next"></div>
+	<div class="single-shop">
 		<h2 class="shop-title">Sample shop</h2>
 		<h3 class="shop-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed fugit dolorem est facilis rem neque fuga nihil quidem earum recusandae ...</h3>
 		<div class="listings-container">
 			<div class="listing">
+			<!-- TODO make listing image the background and use contain -->
 				<img class="listing-image" src="//img0.etsystatic.com/105/0/5662431/il_570xN.850444568_l975.jpg">
-				<h4 class="listing-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis earum molestiae unde illo, voluptatum sequi amet illum assumenda sapiente quos facilis eos sunt id doloremque porro, officia! Lorem</h4>
+				<h4 class="listing-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis earum molestiae unde illo, voluptatum sequi amet illum assumenda sapiente quos facilis eos sunt id doloremque porro, officia! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem perferendis earum, maxime, animi nesciunt dolorum minus reiciendis voluptate assumenda architecto magni porro voluptatibus vero minima explicabo, commodi saepe quae! Unde.</h4>
 			</div>
 			<div class="listing">
 				<img class="listing-image" src="//img0.etsystatic.com/105/0/5662431/il_570xN.850444568_l975.jpg">
@@ -58,15 +59,34 @@
 	</div>
 </div>
 
-<div class="templates single-shop">
+<div class="templates single-shop-ul">
 	<h2 class="shop-name"></h2>
 	<ul class="listings-list">
 		<li class="listings-item"></li>
 	</ul>
 
+
 </div>
 
-<div class="templates error"></div>
+<div class="templates" style="display:none">
+
+	<div class="single-shop">
+		<h2 class="shop-title">Sample shop</h2>
+		<h3 class="shop-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed fugit dolorem est facilis rem neque fuga nihil quidem earum recusandae ...</h3>
+		<div class="listings-container">
+
+		</div>
+	</div>
+
+	<div class="listing">
+		<img class="listing-image" src="//img0.etsystatic.com/105/0/5662431/il_570xN.850444568_l975.jpg">
+		<h4 class="listing-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis earum molestiae unde illo, voluptatum sequi amet illum assumenda sapiente quos facilis eos sunt id doloremque porro, officia! Lorem</h4>
+	</div>
+</div>
+
+<div class="templates error">
+	
+</div>
 <script src="//code.jquery.com/jquery.min.js"></script>
 	<script src="js/app.js"></script>
 	 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGuAxnO0bAlkfg3j1HTb7V2wLZWAS7LHs&callback=initGeocoder"

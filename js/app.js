@@ -62,6 +62,8 @@ function pullEtsyStores (params){
 
 function displayShop(shop){
 
+	var shopElem = $(".templates .single-shop").clone();
+
 	var shopId = shop.shop_id;
 
 	//TODO - figure out why this isn't returning anythings
@@ -69,7 +71,7 @@ function displayShop(shop){
 
 	var shopUrl = shop.url;
 	var shopName = shop.shop_name;
-	var listingUri = "https://openapi.etsy.com/v2/shops/:shop_id/listings";
+	var baseUri = "https://openapi.etsy.com/v2/shops/:shop_id/listings";
 	var listingParams = {
 			api_key:"208jico8ty161pguni7ha87e", 
 			shop_id:shop.shop_id,
@@ -83,9 +85,51 @@ function displayShop(shop){
 	"</h2>"+
 	"<ul class=\"listings-list\">");
 
-	getFeatured(shop, listingUri, listingParams);
+	// getFeatured(shop, listingUri, listingParams);
+
+
+	featuredUri=baseUri+"/featured.js";
+	var getFeatured = buildFeaturedHandler(baseUri,listingParams,shop);
+	etsyGet(featuredUri,listingParams,getFeatured);
 
 }
+
+function etsyGet(url,params,successHandle){
+	$.ajax({
+		url:url,	
+		data: params,
+		dataType:"jsonp",
+		type: "GET",
+		// callback:"callback",
+		success: successHandle,
+		error: function(jqXHR, error){ //this waits for the ajax to return with an error promise object
+		 console.log(jqXHR	);
+		 console.log(error);
+		}
+	});
+
+}
+
+function buildFeaturedHandler(url,params,shop){
+	return function(data){
+		if(data.count)	displayListings(shop, data);
+		else {
+			var activeUrl = url+"/active.js";
+			var activeHandle = buildActiveHandler(shop);
+			etsyGet(activeUrl,params,activeHandle);
+		}
+	}
+}
+
+function buildActiveHandler(shop){
+	return function(data){
+		displayListings(shop,data);
+	}
+}
+
+
+
+
 
 function getFeatured(shop, uri, params){
 	var requestUri = uri+"/featured.js";
@@ -108,7 +152,7 @@ function getFeatured(shop, uri, params){
 }
 
 function getActive(shop){
-		$.ajax({
+	$.ajax({
 		url:"https://openapi.etsy.com/v2/shops/:shop_id/listings/active.js",	
 		data:{
 			api_key:"208jico8ty161pguni7ha87e", 
@@ -139,7 +183,7 @@ function displayListings(shop, listings){
 	listings.results.forEach(function(one){
 		$("#"+shop.shop_id).children("ul").append("<li class=\"listings-item\">"+
 				"<a href=\""+one.url+"\" target=\"_blank\">"+one.title+"</a>"+
-				"<img src=\""+one.MainImage.url_570xN+"\">"+
+				// "<img src=\""+one.MainImage.url_570xN+"\">"+
 			"</li>");
 	
 	});

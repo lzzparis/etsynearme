@@ -64,7 +64,6 @@ function shopHandler(data){
 }
 
 function displayShop(shop){
-	var shopElem = $(".templates .single-shop").clone();
 	var shopId = shop.shop_id;
 	var shopUrl = shop.url;
 	var shopName = shop.shop_name;
@@ -76,19 +75,26 @@ function displayShop(shop){
 			includes:"MainImage"
 		};
 
-	$("#results").append("<div id=\""+shop.shop_id+"\"class=\"single-shop\">"+
-	"<h2 class=\"shop-name\">"+
-		"<a href=\""+shop.shop_url+"\" target=\"_blank\">"+shop.shop_name+"</a>"+
-	"</h2>"+
-	"<ul class=\"listings-list\">");
-
-	// getFeatured(shop, listingUri, listingParams);
-
+	drawShop(shop);
 
 	featuredUri=baseUri+"/featured.js";
 	var getFeatured = buildFeaturedHandler(baseUri,listingParams,shop);
 	etsyGet(featuredUri,listingParams,getFeatured);
 
+}
+
+function drawShop(shop){
+	var shopElem = $(".templates .single-shop").clone();
+
+	shopElem.attr("id",shop.shop_id)
+
+	var nameElem = shopElem.find(".shop-name a");
+	nameElem.text(shop.shop_name);
+
+	var titleElem = shopElem.find(".shop-title");
+	titleElem.text(shop.title);
+
+	$("#results").append(shopElem);
 }
 
 
@@ -113,17 +119,18 @@ function buildActiveHandler(shop){
 function displayListings(shop, listings){
 	var shopUrl = shop.url;
 	var shopName = shop.shop_name;
-	console.log(listings);
 
-	//TODO if no featured, do another ajax call
+	var listContainElem = $("#"+shop.shop_id).children(".listings-container");
 
+	listings.results.forEach(function(oneListing){
+		var listingElem = $(".templates .listing").clone();
+		var listImageElem = listingElem.find(".listing-image");
+		listImageElem.attr("src",oneListing.MainImage.url_570xN);
 
-	listings.results.forEach(function(one){
-		$("#"+shop.shop_id).children("ul").append("<li class=\"listings-item\">"+
-				"<a href=\""+one.url+"\" target=\"_blank\">"+one.title+"</a>"+
-				// "<img src=\""+one.MainImage.url_570xN+"\">"+
-			"</li>");
-	
+		var listTitleElem = listingElem.find(".listing-title");
+		listTitleElem.text(oneListing.title);
+		listContainElem.append(listingElem);
 	});
+
 }
 

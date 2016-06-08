@@ -125,7 +125,7 @@ function displayListings(shop, listings){
 	listings.results.forEach(function(oneListing){
 		var listingElem = $(".templates .listing").clone();
 		var listImageElem = listingElem.find(".listing-image");
-		listImageElem.attr("src",oneListing.MainImage.url_570xN);
+		listImageElem.css({"background-image":"url('"+oneListing.MainImage.url_570xN+"'')"});
 
 		var listTitleElem = listingElem.find(".listing-title");
 		listTitleElem.text(oneListing.title);

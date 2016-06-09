@@ -98,7 +98,7 @@ function drawShop(shop){
 	var titleElem = shopElem.find(".shop-title");
 	titleElem.text(shop.title);
 
-	$("#results").append(shopElem);
+	$("#results").prepend(shopElem);
 }
 
 
@@ -146,5 +146,6 @@ function displayListings(shop, listings){
 	});
 	// $("#"+shop.shop_id).css("display","inline-block");
 
+	$("#results").css("display","inline-block");
 }
 

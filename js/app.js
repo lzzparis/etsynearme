@@ -75,7 +75,7 @@ function displayShop(shop){
 			includes:"MainImage"
 		};
 
-	drawShop(shop);
+	// drawShop(shop);
 
 	featuredUri=baseUri+"/featured.js";
 	var getFeatured = buildFeaturedHandler(baseUri,listingParams,shop);
@@ -100,7 +100,10 @@ function drawShop(shop){
 
 function buildFeaturedHandler(url,params,shop){
 	return function(data){
-		if(data.count)	displayListings(shop, data);
+		if(data.count)	{
+			displayListings(shop, data);
+		}
+
 		else {
 			var activeUrl = url+"/active.js";
 			var activeHandle = buildActiveHandler(shop);
@@ -120,6 +123,8 @@ function displayListings(shop, listings){
 	var shopUrl = shop.url;
 	var shopName = shop.shop_name;
 
+	drawShop(shop);
+
 	var listContainElem = $("#"+shop.shop_id).children(".listings-container");
 
 	listings.results.forEach(function(oneListing){
@@ -129,8 +134,13 @@ function displayListings(shop, listings){
 
 		var listTitleElem = listingElem.find(".listing-title");
 		listTitleElem.html(oneListing.title);
+
+		var listLinkElem = listingElem.find("a");
+		listLinkElem.attr("href",oneListing.url);
+
 		listContainElem.append(listingElem);
 	});
+	// $("#"+shop.shop_id).css("display","inline-block");
 
 }
 

@@ -52,6 +52,7 @@ a:hover{
 	width:100%;
 	margin:0 auto;
 	padding:1rem;
+	/*display:none;*/
 }
 
 .clearfix:after {

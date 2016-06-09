@@ -1,3 +1,5 @@
+var geocoder;
+var lastGeocode="";
 $(document).ready(function(){
 
 	var params ={
@@ -7,14 +9,13 @@ $(document).ready(function(){
 		limit:8
 	};
 
-	var geocoder;
-	var location;
 
 	
 	$(".location-getter").submit(function(event){
 		event.preventDefault();
 		var locationInput = $(this).children(".input-box").val();
 		getLocation(params,locationInput);
+
 	});
 
 });
@@ -31,7 +32,10 @@ function getLocation(params,address){
 		params.lat = results[0].geometry.location.lat();
 		params.lon = results[0].geometry.location.lng();
 
-		getShops(params);
+		if(results[0].place_id !== lastGeocode){
+			getShops(params);
+			lastGeocode = results[0].place_id;
+		}
 
 	})
 

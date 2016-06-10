@@ -14,6 +14,17 @@ $(document).ready(function(){
 	$(".location-getter").submit(function(event){
 		event.preventDefault();
 		var locationInput = $(this).children(".input-box").val();
+		$(".banner").css("height","15vh");
+		$(".location-getter").css({
+			// "position":"relative",
+			// "left":"auto",
+			"top":"8%",
+			// "transform":"translateX(-50%)"
+			// ""
+		});
+		$(".title").css({"font-size":"3rem","margin-bottom":"0.5rem"});
+		$(".input-box").css("font-size","1rem");
+		$(".input-button").css("font-size","0.75rem");
 		getLocation(params,locationInput);
 
 	});
@@ -98,7 +109,7 @@ function drawShop(shop){
 	var titleElem = shopElem.find(".shop-title");
 	titleElem.text(shop.title);
 
-	$("#results").prepend(shopElem);
+	$("#results").append(shopElem);
 }
 
 

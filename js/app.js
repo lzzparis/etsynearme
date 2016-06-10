@@ -1,32 +1,42 @@
 var geocoder;
 var lastGeocode="";
+var params ={
+	api_key:"208jico8ty161pguni7ha87e",
+	lat:0,
+	lon:0,
+	limit:8,
+	page:0
+};
+
 $(document).ready(function(){
 
-	var params ={
-		api_key:"208jico8ty161pguni7ha87e",
-		lat:0,
-		lon:0,
-		limit:8
-	};
-
-
-	
 	$(".location-getter").submit(function(event){
 		event.preventDefault();
 		var locationInput = $(this).children(".input-box").val();
 		$(".banner").css("height","15vh");
 		$(".location-getter").css({
-			// "position":"relative",
-			// "left":"auto",
 			"top":"8%",
-			// "transform":"translateX(-50%)"
-			// ""
 		});
 		$(".title").css({"font-size":"3rem","margin-bottom":"0.5rem"});
 		$(".input-box").css("font-size","1rem");
 		$(".input-button").css("font-size","0.75rem");
 		getLocation(params,locationInput);
 
+	});
+
+
+	$(window).endlessScroll({
+		inflowPixels: 300,
+		callback: getShops(params)
+	});
+
+	var win = $(window);
+	win.scroll(function() {
+		// End of the document reached?
+		if ($(document).height() - win.height() == win.scrollTop()) {
+			// $('#loading').show();
+			getShops(params);
+		}
 	});
 
 });
@@ -59,7 +69,6 @@ function etsyGet(url,params,successHandle){
 		data: params,
 		dataType:"jsonp",
 		type: "GET",
-		// callback:"callback",
 		success: successHandle,
 		error: function(jqXHR, error){ //this waits for the ajax to return with an error promise object
 		 console.log(jqXHR	);
@@ -72,6 +81,7 @@ function etsyGet(url,params,successHandle){
 function getShops (params){
 	var url = "https://openapi.etsy.com/v2/shops.js";
 	etsyGet(url,params,shopHandler);
+	params.page+=1;
 }
 
 function shopHandler(data){
@@ -138,25 +148,27 @@ function displayListings(shop, listings){
 	var shopUrl = shop.url;
 	var shopName = shop.shop_name;
 
-	drawShop(shop);
+	if (listings.count){
+		drawShop(shop);
 
-	var listContainElem = $("#"+shop.shop_id).children(".listings-container");
+		var listContainElem = $("#"+shop.shop_id).children(".listings-container");
 
-	listings.results.forEach(function(oneListing){
-		var listingElem = $(".templates .listing").clone();
-		var listImageElem = listingElem.find(".listing-image");
-		listImageElem.css("background-image","url('"+oneListing.MainImage.url_570xN+"')");
+		listings.results.forEach(function(oneListing){
+			var listingElem = $(".templates .listing").clone();
+			var listImageElem = listingElem.find(".listing-image");
+			listImageElem.css("background-image","url('"+oneListing.MainImage.url_570xN+"')");
 
-		var listTitleElem = listingElem.find(".listing-title");
-		listTitleElem.html(oneListing.title);
+			var listTitleElem = listingElem.find(".listing-title");
+			listTitleElem.html(oneListing.title);
 
-		var listLinkElem = listingElem.find("a");
-		listLinkElem.attr("href",oneListing.url);
+			var listLinkElem = listingElem.find("a");
+			listLinkElem.attr("href",oneListing.url);
 
-		listContainElem.append(listingElem);
-	});
-	// $("#"+shop.shop_id).css("display","inline-block");
+			listContainElem.append(listingElem);
+		});
 
-	$("#results").css("display","inline-block");
+		$("#results").css("display","inline-block");
+	}
+	// else console.log("no listings");
 }
 

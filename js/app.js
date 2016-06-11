@@ -5,7 +5,7 @@ var params ={
 	lat:0,
 	lon:0,
 	limit:8,
-	page:0
+	page:1
 };
 
 $(document).ready(function(){
@@ -24,17 +24,10 @@ $(document).ready(function(){
 
 	});
 
-
-	$(window).endlessScroll({
-		inflowPixels: 300,
-		callback: getShops(params)
-	});
-
 	var win = $(window);
 	win.scroll(function() {
 		// End of the document reached?
 		if ($(document).height() - win.height() == win.scrollTop()) {
-			// $('#loading').show();
 			getShops(params);
 		}
 	});
@@ -117,7 +110,7 @@ function drawShop(shop){
 	nameElem.text(shop.shop_name);
 
 	var titleElem = shopElem.find(".shop-title");
-	titleElem.text(shop.title);
+	titleElem.text(shop.title || "");
 
 	$("#results").append(shopElem);
 }

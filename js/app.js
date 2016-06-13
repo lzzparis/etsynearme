@@ -78,10 +78,10 @@ function getShops (params){
 }
 
 function shopHandler(data){
-	data.results.forEach(displayShop);
+	data.results.forEach(prepShop);
 }
 
-function displayShop(shop){
+function prepShop(shop){
 	var shopId = shop.shop_id;
 	var shopUrl = shop.url;
 	var shopName = shop.shop_name;
@@ -92,8 +92,6 @@ function displayShop(shop){
 			limit:10,
 			includes:"MainImage"
 		};
-
-	// drawShop(shop);
 
 	featuredUri=baseUri+"/featured.js";
 	var getFeatured = buildFeaturedHandler(baseUri,listingParams,shop);

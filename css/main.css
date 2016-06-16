@@ -2,10 +2,14 @@ html, body{
 	text-align:center;
 	background-color: #eee;
 	font-family: Catamaran, sans-serif;
+	width:100%;
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
 }
 
 *, *:before, *:after {
-	box-sizing: border-box;
+	box-sizing: inherit;
 }
 
 .templates {
@@ -15,6 +19,7 @@ html, body{
 
 
 .banner{
+	/*width:100%;*/
 	padding:1rem;
 	background-color: #FFCA85;
 	height:100vh;
@@ -85,6 +90,7 @@ input{
 }
 
 #results{
+	width:100%;
 	display:none;
 }
 
@@ -105,6 +111,7 @@ input{
 	}
 
 .listings-container{
+	/*width:100%;*/
 	width:90%;
 	margin: 1% auto;
 }
@@ -134,7 +141,7 @@ input{
 .listing-title{
 	font-size: 1.1rem;
 	text-align: left;
-	padding:0.5rem;
+	/*padding:0.5rem;*/
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow:ellipsis;
@@ -158,7 +165,30 @@ input{
 }
 
 @media only screen and (max-width:600px){
+	.location-getter{
+		width:90%;
+	}
+	.title {
+		font-size: 4rem;
+	}
+	h2 {
+		font-size: 1rem;
+	}
+	.input-box{
+		width:70%;
+	}
+
+	.input-button{
+		margin:0.5rem 0 ;
+	}
+
 	.listing{
 		width:48%;
 	}
+	.listing-title{
+		font-size: 0.75rem;
+	}
+
+	/*TODO add more sstyle such as font size*/
+
 }

@@ -4,14 +4,14 @@
   "description": "Locate Etsy shops in your area using Google geocoding and the Etsy API",
   "main": "js/app.js",
   "scripts": {
-    "mkdir": "mkdir -p build",
+    "mkdir": "mkdir -p build build/css",
     "build": "npm run clean && npm run mkdir && npm run build:html && npm run build:css",
     "watch": "npm run watch:html & npm run watch:css",
     "clean": "rm -rf build",
     "build:html": "npm run clean:html && cp index.html build/",
     "watch:html": "npm run build:html && chokidar index.html -c 'npm run build:html'",
     "clean:html": "rm -f build/index.html",
-    "build:css": "npm run clean:css && lessc --source-map css/index.less build/$npm_package_name.$npm_package_version.css",
+    "build:css": "npm run clean:css && lessc --source-map css/main.less build/css/$npm_package_name.$npm_package_version.css",
     "watch:css": "npm run build:css && chokidar 'css/**/*.less' -c 'npm run build:css'",
     "clean:css": "rm -f build/$npm_package_name.$npm_package_version.css build/$npm_package_name.$npm_package_version.css.map"
 

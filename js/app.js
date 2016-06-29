@@ -13,13 +13,20 @@ $(document).ready(function(){
 	$(".location-getter").submit(function(event){
 		event.preventDefault();
 		var locationInput = $(this).children(".input-box").val();
-		$(".banner").css("height","15vh");
+		$(".banner").css("height","18vh");
 		$(".location-getter").css({
 			"top":"8%",
 		});
-		$(".title").css({"font-size":"3rem","margin-bottom":"0.5rem"});
+		if($("html").width() < 350){
+			$(".title").css({"font-size":"1.75rem","margin-bottom":"0.5rem"});
+
+		}
+		else{
+			$(".title").css({"font-size":"3rem","margin-bottom":"0.5rem"});
+		}
 		$(".input-box").css("font-size","1rem");
 		$(".input-button").css("font-size","0.75rem");
+
 		getLocation(params,locationInput);
 
 	});

@@ -1,3 +1,4 @@
+@import "reset.css";
 .sans-serif {
   font-family: Catamaran, sans-serif;
 }
@@ -158,6 +159,5 @@ input {
   .listing-title {
     font-size: 0.75rem;
   }
-  /*TODO add more sstyle such as font size*/
 }
 /*# sourceMappingURL=etsynearme.1.0.0.css.map */

@@ -98,7 +98,7 @@ input {
 .single-shop {
   width: 80%;
   margin: 0 auto;
-  padding: 5rem 0rem;
+  padding: 4rem 0rem;
   border-bottom: 2px dotted #ffca85;
   /*display:none;*/
 }
@@ -118,7 +118,7 @@ input {
   width: 23%;
   margin: 1%;
   float: left;
-  border-radius: 4px;
+  border-radius: 8px;
   background-color: #ffffff;
 }
 .listing-image {
@@ -130,11 +130,13 @@ input {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 .listing-title {
   font-size: 1.1rem;
   text-align: left;
-  /*padding:0.5rem;*/
+  padding: 0.5rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

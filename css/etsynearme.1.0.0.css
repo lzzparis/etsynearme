@@ -67,6 +67,7 @@ input {
   display: inline-block;
   transition: 1.75s;
   transition-delay: 0.25s;
+  text-align: center;
 }
 .input-box {
   font-size: 2rem;
@@ -95,9 +96,10 @@ input {
   display: none;
 }
 .single-shop {
-  width: 100%;
+  width: 80%;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 5rem 0rem;
+  border-bottom: 2px dotted #ffca85;
   /*display:none;*/
 }
 .clearfix:after {
@@ -109,7 +111,7 @@ input {
   height: 0;
 }
 .listings-container {
-  width: 90%;
+  width: 100%;
   margin: 1% auto;
 }
 .listing {

@@ -67,9 +67,10 @@ input {
   display: inline-block;
   transition: 1.75s;
   transition-delay: 0.25s;
+  text-align: center;
 }
 .input-box {
-  font-size: 1.5rem;
+  font-size: 2rem;
   padding: 0.25rem 0.5rem;
   color: #505050;
   border: 1px solid #9f9f9f;
@@ -81,7 +82,7 @@ input {
   border: 1px solid #cc4a00;
 }
 .input-button {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   letter-spacing: 0.1rem;
   padding: 0.4rem;
   background-color: #cc4a00;
@@ -95,9 +96,10 @@ input {
   display: none;
 }
 .single-shop {
-  width: 100%;
+  width: 80%;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 4rem 0rem;
+  border-bottom: 2px dotted #ffca85;
   /*display:none;*/
 }
 .clearfix:after {
@@ -109,15 +111,18 @@ input {
   height: 0;
 }
 .listings-container {
-  width: 90%;
+  width: 100%;
   margin: 1% auto;
 }
 .listing {
   width: 23%;
   margin: 1%;
   float: left;
-  border-radius: 4px;
+  border-radius: 8px;
   background-color: #ffffff;
+  -webkit-box-shadow: 0px 0px 5px 1px #cfcfcf;
+  -moz-box-shadow: 0px 0px 5px 1px #cfcfcf;
+  box-shadow: 0px 0px 5px 1px #cfcfcf;
 }
 .listing-image {
   width: 100%;
@@ -128,18 +133,20 @@ input {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 .listing-title {
   font-size: 1.1rem;
   text-align: left;
-  /*padding:0.5rem;*/
+  padding: 0.5rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 @media only screen and (max-width: 600px) {
   .location-getter {
-    width: 90%;
+    width: 100%;
   }
   .title {
     font-size: 4rem;

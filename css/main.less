@@ -83,10 +83,11 @@ input{
   transform: translate(-50%,-50%);
   display: inline-block;
   .delayed-transition;
+  text-align: center;
 }
 
 .input-box {
-  font-size: 1.5rem;
+  font-size: 2rem;
   padding:0.25rem 0.5rem;
   color: @grey4;
   border: 1px solid @grey3;
@@ -99,9 +100,9 @@ input{
 }
 
 .input-button {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   letter-spacing: 0.1rem;
-  padding:0.4rem;
+  padding: 0.4rem;
   background-color: @dark-orange;
   color: @white;
   border: 0;
@@ -109,14 +110,15 @@ input{
 }
 
 #results{
-  width:100%;
-  display:none;
+  width: 100%;
+  display: none;
 }
 
 .single-shop {
-  width:100%;
-  margin:0 auto;
-  padding:1rem;
+  width: 80%;
+  margin: 0 auto;
+  padding: 4rem 0rem;
+  border-bottom: 2px dotted @light-orange;
   /*display:none;*/
 }
 
@@ -129,17 +131,21 @@ input{
   height: 0;
   }
 
-.listings-container{
-  width:90%;
+.listings-container {
+  width: 100%;
   margin: 1% auto;
 }
 
-.listing{
+.listing {
   width:23%;
   margin:1%;
   float:left;
-  border-radius: 4px;
+  border-radius: 8px;
   background-color: @white;
+
+  -webkit-box-shadow: 0px 0px 5px 1px @grey2;
+  -moz-box-shadow: 0px 0px 5px 1px @grey2;
+  box-shadow: 0px 0px 5px 1px @grey2;
   
 }
 
@@ -153,12 +159,15 @@ input{
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
-.listing-title{
+.listing-title {
   font-size: 1.1rem;
   text-align: left;
-  /*padding:0.5rem;*/
+  padding: 0.5rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow:ellipsis;
@@ -166,7 +175,7 @@ input{
 
 @media only screen and (max-width:600px){
   .location-getter{
-    width:90%;
+    width: 100%;
   }
   .title {
     font-size: 4rem;
@@ -175,15 +184,15 @@ input{
     font-size: 1rem;
   }
   .input-box{
-    width:70%;
+    width: 70%;
   }
 
   .input-button{
-    margin:0.5rem 0 ;
+    margin: 0.5rem 0 ;
   }
 
   .listing{
-    width:48%;
+    width: 48%;
   }
   .listing-title{
     font-size: 0.75rem;

@@ -69,7 +69,7 @@ input {
   transition-delay: 0.25s;
 }
 .input-box {
-  font-size: 1.5rem;
+  font-size: 2rem;
   padding: 0.25rem 0.5rem;
   color: #505050;
   border: 1px solid #9f9f9f;
@@ -81,7 +81,7 @@ input {
   border: 1px solid #cc4a00;
 }
 .input-button {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   letter-spacing: 0.1rem;
   padding: 0.4rem;
   background-color: #cc4a00;
@@ -139,7 +139,7 @@ input {
 }
 @media only screen and (max-width: 600px) {
   .location-getter {
-    width: 90%;
+    width: 100%;
   }
   .title {
     font-size: 4rem;

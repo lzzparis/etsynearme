@@ -36,9 +36,26 @@ html, body{
   box-sizing: inherit;
 }
 
+.toolbar {
+  position: fixed;
+  width: 100%;
+  padding: 0.25rem;
+  background-color: @dark-orange;
+  color: @white;
+}
+
+.toolbar a {
+  color: @white;
+  font-weight: bold;
+}
+
+.toolbar-text {
+  display: inline-block;
+}
+
 .banner{
   /*width:100%;*/
-  padding:1rem;
+  padding: 8rem 1rem 1rem 1rem;
   background-color: @light-orange;
   height:100vh;
   box-shadow: 0px 3px 10px @grey2;
@@ -72,7 +89,7 @@ a {
   }
 }
 
-input{
+input {
   border-radius: 2px;
 }
 
@@ -90,6 +107,7 @@ input{
   font-size: 2rem;
   padding:0.25rem 0.5rem;
   color: @grey4;
+  text-align: center;
   border: 1px solid @grey3;
   .delayed-transition;
 
@@ -198,4 +216,10 @@ input{
     font-size: 0.75rem;
   }
 
+}
+
+@media only screen and (max-width: 384px) {
+  .single-shop {
+    padding-top: 3rem;
+  }
 }

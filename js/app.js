@@ -20,14 +20,17 @@ $(document).ready(function() {
 
 		//Shrink the banner
 		$(".banner").css("height", "18vh");
-		$(".location-getter").css({
-			"top":"8%", 
-		});
-		if($("html").width() < 350) {
+		if($("html").width() < 390) {
 			$(".title").css({"font-size":"1.75rem", "margin-bottom":"0.5rem"});
+			$(".location-getter").css({
+				"top":"15%", 
+			});
 		}
 		else{
 			$(".title").css({"font-size":"3rem", "margin-bottom":"0.5rem"});
+			$(".location-getter").css({
+				"top":"10%", 
+			});
 		}
 		$(".input-box").css("font-size", "1rem");
 		$(".input-button").css("font-size", "0.75rem");
